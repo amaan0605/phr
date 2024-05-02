@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:phr_app/pages/Navbar/create_community_profile.dart';
 import 'package:phr_app/pages/Navbar/listen.dart';
 import 'package:phr_app/pages/Navbar/talk.dart';
+import 'package:phr_app/pages/Navbar/view_community_profile.dart';
+import 'package:phr_app/services/firebase/auth_services.dart';
 // import 'package:phr_app/pages/Navbar/chat1.dart';
 
 class CommunityPageOne extends StatefulWidget {
@@ -83,9 +86,14 @@ class _CommunityPageOneState extends State<CommunityPageOne> {
         ],
         automaticallyImplyLeading: false,
         elevation: 10,
-        leading: Container(
-          padding: const EdgeInsets.all(5),
-          child: Image.asset('images/logo.png'),
+        leading: InkWell(
+          onTap: () async {
+            _auth.signOut();
+          },
+          child: Container(
+            padding: const EdgeInsets.all(5),
+            child: Image.asset('images/logo.png'),
+          ),
         ),
       ),
       body: SafeArea(
@@ -106,6 +114,9 @@ class _CommunityPageOneState extends State<CommunityPageOne> {
                     padding: const EdgeInsets.all(8.0),
                     child: ElevatedButton(
                       onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: ((context) =>
+                                const ViewCommunityprofile())));
                         // Add the functionality to navigate to the community profile page
                       },
                       style: ElevatedButton.styleFrom(

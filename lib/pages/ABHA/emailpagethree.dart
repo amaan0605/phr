@@ -48,7 +48,9 @@ class _EmailpagethreeState extends State<Emailpagethree> {
     try {
       CollectionReference collectionReference =
           FirebaseFirestore.instance.collection('Users');
-      DocumentReference documentReference = await collectionReference.add({
+
+      // DocumentReference documentReference = await collectionReference.add
+      await collectionReference.doc(firebaseAuth.currentUser!.uid).set({
         "name": fullNameController.text,
         "dob": Timestamp.fromDate(DateTime(
             int.parse(dobYearController.text),
@@ -65,8 +67,8 @@ class _EmailpagethreeState extends State<Emailpagethree> {
         "password": '',
         "uid": firebaseAuth.currentUser!.uid,
       });
-      docId = documentReference.id;
-      log(docId);
+      // docId = documentReference.id;
+      // log(docId);
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
@@ -362,15 +364,14 @@ class _EmailpagethreeState extends State<Emailpagethree> {
                   stateController.text.isNotEmpty &&
                   pincodeController.text.isNotEmpty) {
                 await createDetailsDoc();
-                if (docId.isNotEmpty) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const Emailpagefive(
-                            //firestoreDocId: docId,
-                            )),
-                  );
-                }
+
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Emailpagefive(
+                          //firestoreDocId: docId,
+                          )),
+                );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                     content: Text('Please fill all the required fields')));
