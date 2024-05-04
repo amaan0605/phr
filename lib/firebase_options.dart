@@ -69,6 +69,6 @@ class DefaultFirebaseOptions {
         '980102181758-b41m3hj3iqdsttt7lj1t7m01j0bjjm6p.apps.googleusercontent.com',
     iosClientId:
         '980102181758-3eh8aogps9eslhabu03ei439kpv8mgf8.apps.googleusercontent.com',
-    iosBundleId: 'com.example.phrApp',
+    iosBundleId: 'com.example.phrapp',
   );
 }

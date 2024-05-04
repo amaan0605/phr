@@ -15,11 +15,43 @@
       },
       "oauth_client": [
         {
+          "client_id": "980102181758-46c39b2tiqerefg2jcoiici6hm5e4n9j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.phrapp",
+            "certificate_hash": "78e56b4ac5b2e0f1cb7eecb44a8948da7f0ce54f"
+          }
+        },
+        {
+          "client_id": "980102181758-75sjek5inoijgk7ubi3e994vt3o0u3of.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.phrapp",
+            "certificate_hash": "3d97517fb490f3a1c3058e3671151e5c350c4f41"
+          }
+        },
+        {
           "client_id": "980102181758-b41m3hj3iqdsttt7lj1t7m01j0bjjm6p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.phrapp",
             "certificate_hash": "25b8bbe78a6d175b3658e1d8cdb061f7f0fa34e7"
+          }
+        },
+        {
+          "client_id": "980102181758-rpeor2a5c7jg38bm8deu7mk7e2s9g0vb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.phrapp",
+            "certificate_hash": "0f045531358bfc3e08556f4ce2d339f0beb6f2fb"
+          }
+        },
+        {
+          "client_id": "980102181758-sralpqb5ed0f06be5dv73pd3gfdq9dsn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.phrapp",
+            "certificate_hash": "862f68f95fe8b192a58b00f0c37131dabca9ca5e"
           }
         },
         {
@@ -29,7 +61,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCdtgl0G1VBBkvPJjhrUlXJBo0zMkt_Rhw"
+          "current_key": "AIzaSyCL2DGHak3LixLMUCcuEHXZFg4aI-Wo97I"
         }
       ],
       "services": {

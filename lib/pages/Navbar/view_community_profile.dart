@@ -28,11 +28,10 @@ class _ViewCommunityprofileState extends State<ViewCommunityprofile> {
     if (_user != null) {
       DocumentSnapshot userDataSnapshot =
           await _firestore.collection('Users').doc(_user!.uid).get();
-      print(userDataSnapshot.data());
+
       setState(() {
         _userData = userDataSnapshot.data() as Map<String, dynamic>?;
       });
-      print(_user!.uid);
     }
   }
 
@@ -88,87 +87,90 @@ class _ViewCommunityprofileState extends State<ViewCommunityprofile> {
           child: Image.asset('images/logo.png'),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 10, left: 10.0, bottom: 10),
-              child: Text(
-                'My Community Profile',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Image.asset('images/relax.png'),
-            ),
-            SizedBox(height: 20),
-            Container(
-              height: 250,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Username:  ${_userData!['name']}',
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    const Text(
-                      'Points:  ',
+      body: _userData == null
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, left: 10.0, bottom: 10),
+                    child: Text(
+                      'My Community Profile',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 15),
-                    Text(
-                      'Issue of Interest: ${_userData?['issue_of_interest'] ?? 'not specified'} ',
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Image.network(_userData?['profile_photo'] ??
+                        'https://firebasestorage.googleapis.com/v0/b/test2-2769e.appspot.com/o/avatar%2Fimage3.png?alt=media&token=167b0f25-d3ce-4e4d-8ade-229f492e7fe5'),
+                  ),
+                  const SizedBox(height: 20),
+                  Container(
+                    height: 250,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Username:  ${_userData!['name']}',
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                          const Text(
+                            'Points:  ',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 15),
+                          Text(
+                            'Issue of Interest: ${_userData?['issue_of_interest'] ?? 'not specified'} ',
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CreateCommunityprofile()));
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.orange,
+                                minimumSize: Size(double.infinity, 50),
+                                shape: BeveledRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5))),
+                            child: const Text(
+                              'EDIT',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                const CreateCommunityprofile()));
-                      },
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
-                          minimumSize: Size(double.infinity, 50),
-                          shape: BeveledRectangleBorder(
-                              borderRadius: BorderRadius.circular(5))),
-                      child: const Text(
-                        'EDIT',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    )
-                  ],
-                ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
+            ),
     );
   }
 }

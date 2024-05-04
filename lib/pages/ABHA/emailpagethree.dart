@@ -66,6 +66,8 @@ class _EmailpagethreeState extends State<Emailpagethree> {
         "pincode": pincodeController.text,
         "password": '',
         "uid": firebaseAuth.currentUser!.uid,
+        "profile_photo": '',
+        "issue_of_interest": '',
       });
       // docId = documentReference.id;
       // log(docId);
